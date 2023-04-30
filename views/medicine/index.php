@@ -1,24 +1,24 @@
 <?php
 
-use app\models\Employee;
+use app\models\Medicine;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var app\models\EmployeeSearch $searchModel */
+/** @var app\models\MedicineSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Pegawai';
+$this->title = 'Medicines';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="employee-index">
+<div class="medicine-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Tambah', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Medicine', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,18 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            // 'id',
-            'number_id',
-            'employee_name',
-            // 'address',
-            // 'gender',
-            'username',
-            //'password',
-            // 'access_id',
-            'accessname.access_code',
+            'id',
+            'medicine_name',
+            'medicine_detail',
+            'medicine_price',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Employee $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Medicine $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],

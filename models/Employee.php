@@ -32,7 +32,7 @@ class Employee extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['number_id', 'employee_name', 'address', 'gender', 'username', 'password', 'access_id'], 'required'],
+            [['number_id', 'employee_name', 'address', 'gender', 'username', 'password'], 'required'],
             [['number_id', 'access_id'], 'integer'],
             [['gender'], 'string'],
             [['employee_name', 'address', 'username', 'password'], 'string', 'max' => 255],

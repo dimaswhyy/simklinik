@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /** @var yii\web\View $this */
 /** @var app\models\Employee $model */
@@ -24,10 +25,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'access_id')->textInput() ?>
+
+    <?php
+    $dataPost=ArrayHelper::map(\app\models\UserAccess::find()->asArray()->all(), 'id', 'access_name');
+	echo $form->field($model, 'access_id')
+        ->dropDownList(
+            $dataPost,           
+            ['id'=>'access_name']
+        );
+    ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
