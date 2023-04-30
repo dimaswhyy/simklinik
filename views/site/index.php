@@ -21,14 +21,14 @@ $this->title = 'My Yii Application';
                 <center>
                 <h2>Tindakan</h2>
 
-                <p><a class="btn btn-outline-secondary" href="<?php echo Yii::$app->urlManager->createUrl(['action/create']); ?>">Sekarang</a></p>
+                <p><a class="btn btn-outline-secondary" href="<?php echo Yii::$app->urlManager->createUrl(['action/index']); ?>">Sekarang</a></p>
                 </center>
             </div>
             <div class="col-lg-6">
                 <center>
                 <h2>Pembayaran</h2>
 
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/extensions/">Sekarang</a></p>
+                <p><a class="btn btn-outline-secondary" href="<?php echo Yii::$app->urlManager->createUrl(['payment/index']); ?>">Sekarang</a></p>
                 </center>
             </div>
         </div>

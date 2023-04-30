@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -12,9 +13,19 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'action_id')->textInput() ?>
+    <?php // $form->field($model, 'action_id')->textInput() ?>
+    <?php
+        $dataPost=ArrayHelper::map(\app\models\Action::find()->asArray()->all(), 'id', 'id');
+	    echo $form->field($model, 'action_id')
+            ->dropDownList(
+            $dataPost,           
+            ['id'=>'id']
+        );
+    ?>
+    <div hidden>
+        <?= $form->field($model, 'payment_number')->textInput(['hidden']) ?>
+    </div>
 
-    <?= $form->field($model, 'payment_number')->textInput() ?>
 
     <?= $form->field($model, 'payment_date')->textInput() ?>
 
