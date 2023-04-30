@@ -45,12 +45,22 @@ class Patient extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'patient_name' => 'Patient Name',
-            'gender' => 'Gender',
-            'address' => 'Address',
-            'city' => 'City',
-            'province' => 'Province',
-            'phone_number' => 'Phone Number',
+            'patient_name' => 'Nama Pasien',
+            'gender' => 'Jenis Kelamin',
+            'address' => 'Alamat',
+            'city' => 'Kota',
+            'province' => 'Provinsi',
+            'phone_number' => 'Nomor Telepon',
         ];
+    }
+
+    public function getCity()
+    {
+        return $this->hasOne(City::class, ['id' => 'city']);
+    }
+
+    public function getProvince()
+    {
+        return $this->hasOne(Province::class, ['id' => 'province']);
     }
 }

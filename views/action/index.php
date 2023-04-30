@@ -1,24 +1,24 @@
 <?php
 
-use app\models\Patient;
+use app\models\Action;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var app\models\PatientSearch $searchModel */
+/** @var app\models\ActionSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Patients';
+$this->title = 'Actions';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="patient-index">
+<div class="action-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Patient', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Action', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,16 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            // 'id',
-            'patient_name',
-            'gender',
-            'address',
-            'city',
-            //'province',
-            'phone_number',
+            'id',
+            'patient_id',
+            'action:ntext',
+            'medicine_id',
+            'medicine_price',
+            //'total_payment',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Patient $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Action $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
