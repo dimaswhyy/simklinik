@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Employee;
+use app\models\UserAccess;
 
 /**
- * EmployeeSearch represents the model behind the search form of `app\models\Employee`.
+ * UserAccessSearch represents the model behind the search form of `app\models\UserAccess`.
  */
-class EmployeeSearch extends Employee
+class UserAccessSearch extends UserAccess
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class EmployeeSearch extends Employee
     public function rules()
     {
         return [
-            [['id', 'number_id', 'access_id'], 'integer'],
-            [['employee_name', 'address', 'gender', 'username', 'password'], 'safe'],
+            [['id'], 'integer'],
+            [['access_name', 'access_code'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class EmployeeSearch extends Employee
      */
     public function search($params)
     {
-        $query = Employee::find();
+        $query = UserAccess::find();
 
         // add conditions that should always apply here
 
@@ -59,15 +59,10 @@ class EmployeeSearch extends Employee
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'number_id' => $this->number_id,
-            'access_id' => $this->access_id,
         ]);
 
-        $query->andFilterWhere(['like', 'employee_name', $this->employee_name])
-            ->andFilterWhere(['like', 'address', $this->address])
-            ->andFilterWhere(['like', 'gender', $this->gender])
-            ->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'password', $this->password]);
+        $query->andFilterWhere(['like', 'access_name', $this->access_name]);
+        $query->andFilterWhere(['like', 'access_code', $this->access_code]);
 
         return $dataProvider;
     }
